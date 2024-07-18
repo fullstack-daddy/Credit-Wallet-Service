@@ -174,9 +174,8 @@ npm test
 ```
 
 This will execute the test suite using Jest and Mocha.
-```
 
-**ER DIAGRAM**
+## ER DIAGRAM
 
 Here's a representation of an Entity-Relationship (E-R) Diagram for the Credit Wallet Service project:
 
