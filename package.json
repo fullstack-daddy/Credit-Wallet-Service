@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "tsx src/server.ts",
-    "migrate": "tsx migrations.ts",
+    "migrate": "tsx src/migrations.ts",
     "dev": "node src/server.ts",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },

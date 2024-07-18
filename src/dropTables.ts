@@ -1,4 +1,4 @@
-import knex from './src/utils/database';
+import knex from './utils/database';
 
 async function dropTables(): Promise<void> {
   try {
