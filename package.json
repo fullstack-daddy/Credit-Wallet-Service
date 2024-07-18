@@ -4,6 +4,7 @@
   "type": "module",
   "main": "server.ts",
   "scripts": {
+    "build": "tsc",
     "start": "tsx src/server.ts",
     "migrate": "tsx src/migrations.ts",
     "dev": "node src/server.ts",
