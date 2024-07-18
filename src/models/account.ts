@@ -57,7 +57,7 @@ export const transferFunds = async (
   toAccountId: number,
   amount: number
 ): Promise<{ message: string, balance: number }> => {
-  let fromAccountBalance: number;
+  let fromAccountBalance: number = 0;
 
   await knex.transaction(async (trx) => {
     const fromAccount = await trx("accounts")

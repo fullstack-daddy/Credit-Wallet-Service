@@ -1,37 +1,5 @@
-// import knex from "./src/utils/database";
-
-// async function createTables() {
-//   try {
-//     // Create users table
-//     await knex.schema.createTable('users', (table) => {
-//       table.increments('id').primary();
-//       table.string('email').unique().notNullable();
-//       table.string('password').notNullable();
-//       table.timestamps(true, true);
-//     });
-
-//     // Create accounts table
-//     await knex.schema.createTable('accounts', (table) => {
-//       table.increments('id').primary();
-//       table.integer('userId').unsigned().references('id').inTable('users');
-//       table.string('accountId').unique().notNullable();
-//       table.string('name').notNullable();
-//       table.string('email').notNullable();
-//       table.decimal('balance', 10, 2).defaultTo(0);
-//       table.timestamps(true, true);
-//     });
-
-//     console.log('Tables created successfully');
-//   } catch (error) {
-//     console.error('Error creating tables:', error);
-//   } finally {
-//     knex.destroy();
-//   }
-// }
-
-// createTables();
-
-import knex from './src/utils/database';
+import { Knex } from 'knex';
+import knex from './utils/database';
 
 async function createTables(): Promise<void> {
   try {
@@ -39,7 +7,7 @@ async function createTables(): Promise<void> {
     const usersTableExists = await knex.schema.hasTable('users');
     if (!usersTableExists) {
       // Create users table
-      await knex.schema.createTable('users', (table) => {
+      await knex.schema.createTable('users', (table: Knex.TableBuilder) => {
         table.increments('id').primary();
         table.string('email').unique().notNullable();
         table.string('password').notNullable();
@@ -55,7 +23,7 @@ async function createTables(): Promise<void> {
     const accountsTableExists = await knex.schema.hasTable('accounts');
     if (!accountsTableExists) {
       // Create accounts table
-      await knex.schema.createTable('accounts', (table) => {
+      await knex.schema.createTable('accounts', (table: Knex.TableBuilder) => {
         table.increments('id').primary();
         table.integer('userId').unsigned().references('id').inTable('users');
         table.string('accountId').unique().notNullable();
@@ -75,4 +43,7 @@ async function createTables(): Promise<void> {
   }
 }
 
-createTables();
+createTables().catch((error) => {
+  console.error('Unhandled error in createTables:', error);
+  process.exit(1);
+});
