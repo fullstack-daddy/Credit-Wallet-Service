@@ -181,8 +181,6 @@ Here's a representation of an Entity-Relationship (E-R) Diagram for the Credit W
 
 ![ER Diagram](https://www.planttext.com/api/plantuml/png/dP5DIyGm443l_HLZlBJGnRkKibsmiEZ1mtgMCHdPG9AMVEZ2hl_TIKjrnGN1N99vaqdU9EiGqSTaJN6bw5KxWbstURWh7Lgg5GLPWJGO0cG0641aAA1feDpLrttVyQYWRR_g7-_BGmLDQW_DJVh6_OnrnhejYlcQfq0-r22cMLHmB20Ve5K5jw1Tv90iQiFH6tgvHyzaP9_tmQiVSF8x1z8JHbBF61b7ROaxjICdqgWk9JuMfqxA8RcOjPRbPJDkAR7tzWpXNB3zm-rtJozeqCcyIv7K5it_EfZU4KwdrMeumcBFcyGUWoZMv1H_zIS0)
 
-```
-
 This E-R Diagram represents the core data structure of THE Credit Wallet Service. It allows for user management and account operations while maintaining a clear separation between user authentication data and financial account information.
 
 ## License
