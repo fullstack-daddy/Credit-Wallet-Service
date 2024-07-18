@@ -180,49 +180,11 @@ This will execute the test suite using Jest and Mocha.
 
 Here's a textual representation of an Entity-Relationship (E-R) Diagram for the Credit Wallet Service project:
 
-```
-+----------------+        +-------------------+
-|     Users      |        |     Accounts      |
-+----------------+        +-------------------+
-| PK id          |        | PK id             |
-| email          |        | FK userId         |
-| password       |        | accountId         |
-| name           |        | name              |
-| created_at     |        | email             |
-| updated_at     |        | balance           |
-+----------------+        | created_at        |
-         |                | updated_at        |
-         |                +-------------------+
-         |                         |
-         |                         |
-         +--------------------------+
-                  1 to 1
+![ER Diagram]([https://url-to-your-hosted-image.png](https://www.planttext.com/api/plantuml/png/dP5DIyGm443l_HLZlBJGnRkKibsmiEZ1mtgMCHdPG9AMVEZ2hl_TIKjrnGN1N99vaqdU9EiGqSTaJN6bw5KxWbstURWh7Lgg5GLPWJGO0cG0641aAA1feDpLrttVyQYWRR_g7-_BGmLDQW_DJVh6_OnrnhejYlcQfq0-r22cMLHmB20Ve5K5jw1Tv90iQiFH6tgvHyzaP9_tmQiVSF8x1z8JHbBF61b7ROaxjICdqgWk9JuMfqxA8RcOjPRbPJDkAR7tzWpXNB3zm-rtJozeqCcyIv7K5it_EfZU4KwdrMeumcBFcyGUWoZMv1H_zIS0))
 
 ```
 
-Explanation of the E-R Diagram:
-
-1. Users Entity:
-   - Primary Key (PK): id (auto-incrementing integer)
-   - Attributes: email (unique), password (hashed), name, created_at, updated_at
-
-2. Accounts Entity:
-   - Primary Key (PK): id (auto-incrementing integer)
-   - Foreign Key (FK): userId (references Users.id)
-   - Attributes: accountId (unique), name, email, balance, created_at, updated_at
-
-3. Relationship:
-   - There is a one-to-one relationship between Users and Accounts.
-   - Each User can have one Account, and each Account belongs to one User.
-   - This relationship is represented by the userId foreign key in the Accounts table.
-
-Key points:
-- The Users table stores user authentication and basic information.
-- The Accounts table stores financial account details for each user.
-- The one-to-one relationship ensures that each user has exactly one account.
-- Both tables include created_at and updated_at timestamps for tracking record creation and modification times.
-
-This E-R Diagram represents the core data structure of your Credit Wallet Service. It allows for user management and account operations while maintaining a clear separation between user authentication data and financial account information.
+This E-R Diagram represents the core data structure of THE Credit Wallet Service. It allows for user management and account operations while maintaining a clear separation between user authentication data and financial account information.
 
 ## License
 
