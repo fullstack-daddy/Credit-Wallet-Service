@@ -21,10 +21,12 @@ Lendsqr Credit Wallet Service is a RESTful API for managing user accounts in a c
 
 ## Features
 
-- Create a new account
-- Fund an existing account
-- Transfer funds between accounts
-- Withdraw funds from an account
+- User Authentication (Signup/Login)
+- Account Creation and Management
+- Fund Deposit
+- Fund Withdrawal
+- Fund Transfer Between Accounts
+- Blacklist Checking
 
 ## Technologies Used
 
@@ -36,20 +38,23 @@ Lendsqr Credit Wallet Service is a RESTful API for managing user accounts in a c
 - **Jest**: JavaScript testing framework
 - **Sinon**: Standalone test spies, stubs, and mocks for JavaScript
 - **Mocha**: JavaScript test framework for Node.js programs
+- **Bcrypt** for password hashing
+- **JSON Web Tokens (JWT)** for authentication
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
-- MySQL database
+- Node.js (v14.0.0 or later)
+- npm (v6.0.0 or later)
+- MySQL (v5.7 or later)
 
 ### Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/fullstack-daddy/lendsqr.git
-   cd lendsqr
+   git clone https://github.com/fullstack-daddy/Credit-Wallet-Service.git
+   cd credit-wallet-service
    ```
 
 2. Install the dependencies:
@@ -64,6 +69,7 @@ Lendsqr Credit Wallet Service is a RESTful API for managing user accounts in a c
    DATABASE_USER=your_database_user
    DATABASE_PASSWORD=your_database_password
    DATABASE_NAME=your_database_name
+   JWT_SECRET=your_secret
    ```
 
 ## Running the Application
@@ -87,7 +93,30 @@ npm start
 
 The following endpoints are available in the Credit Wallet Service:
 
-1. **Create Account**
+1.**Sign Up**
+    - **URL**: `/signup`
+   - **Method**: `POST`
+   - **Description**: Creates a new user.
+   - **Body Parameters**:
+     ```json
+     {
+       "name": "string",
+       "email": "string"
+       "password": "string"
+     }
+     ```
+2. **Login**
+    - **URL**: `/login`
+   - **Method**: `POST`
+   - **Description**: Login and authenticates a user.
+   - **Body Parameters**:
+     ```json
+     {
+       "email": "string"
+       "password": "string"
+     }
+     ```
+3. **Create Account**
    - **URL**: `/accounts`
    - **Method**: `POST`
    - **Description**: Creates a new account.
@@ -96,10 +125,11 @@ The following endpoints are available in the Credit Wallet Service:
      {
        "name": "string",
        "email": "string"
+       "balance": "number"
      }
      ```
-
-2. **Fund Account**
+     
+4. **Fund Account**
    - **URL**: `/accounts/fund`
    - **Method**: `POST`
    - **Description**: Funds an existing account.
@@ -111,7 +141,7 @@ The following endpoints are available in the Credit Wallet Service:
      }
      ```
 
-3. **Transfer Funds**
+5. **Transfer Funds**
    - **URL**: `/accounts/transfer`
    - **Method**: `POST`
    - **Description**: Transfers funds between accounts.
@@ -124,7 +154,7 @@ The following endpoints are available in the Credit Wallet Service:
      }
      ```
 
-4. **Withdraw Funds**
+6. **Withdraw Funds**
    - **URL**: `/accounts/withdraw`
    - **Method**: `POST`
    - **Description**: Withdraws funds from an account.
@@ -144,6 +174,14 @@ npm test
 ```
 
 This will execute the test suite using Jest and Mocha.
+
+## ER DIAGRAM
+
+Here's a representation of an Entity-Relationship (E-R) Diagram for the Credit Wallet Service project:
+
+![ER Diagram](https://www.planttext.com/api/plantuml/png/dP5DIyGm443l_HLZlBJGnRkKibsmiEZ1mtgMCHdPG9AMVEZ2hl_TIKjrnGN1N99vaqdU9EiGqSTaJN6bw5KxWbstURWh7Lgg5GLPWJGO0cG0641aAA1feDpLrttVyQYWRR_g7-_BGmLDQW_DJVh6_OnrnhejYlcQfq0-r22cMLHmB20Ve5K5jw1Tv90iQiFH6tgvHyzaP9_tmQiVSF8x1z8JHbBF61b7ROaxjICdqgWk9JuMfqxA8RcOjPRbPJDkAR7tzWpXNB3zm-rtJozeqCcyIv7K5it_EfZU4KwdrMeumcBFcyGUWoZMv1H_zIS0)
+
+This E-R Diagram represents the core data structure of THE Credit Wallet Service. It allows for user management and account operations while maintaining a clear separation between user authentication data and financial account information.
 
 ## License
 
