@@ -1,9 +1,12 @@
 {
   "name": "lendsqr",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --config mocha.config.js"
+    "start": "tsx src/server.ts",
+    "dev": "nodemon src/server.ts",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "author": "Aboyeji Emmanuel Olusola",
   "license": "MIT",
@@ -16,17 +19,24 @@
     "mysql2": "^3.10.2"
   },
   "devDependencies": {
+    "@jest/globals": "^29.7.0",
     "@types/chai": "^4.3.16",
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
     "@types/knex": "^0.16.1",
     "@types/mocha": "^10.0.7",
-    "@types/node": "^20.14.9",
+    "@types/node": "^20.14.10",
     "@types/sinon": "^17.0.3",
     "chai": "^5.1.1",
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
     "mocha": "^10.6.0",
     "sinon": "^18.0.0",
+    "ts-jest": "^29.2.2",
     "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.16.2",
     "typescript": "^5.5.3"
   }
 }

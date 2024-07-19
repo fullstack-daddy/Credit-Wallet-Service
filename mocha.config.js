@@ -1,6 +1,7 @@
 module.exports = {
-    require: 'ts-node/register',
+    require: ['ts-node/register', 'tsconfig-paths/register'],
     extension: ['ts'],
-    spec: 'test/**/*.test.ts'
+    spec: 'test/**/*.test.ts',
+    timeout: 5000
   };
   

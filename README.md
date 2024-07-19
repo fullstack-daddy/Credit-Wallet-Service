@@ -1,45 +1,154 @@
-# Credit-Wallet-Service
+# Lendsqr Credit Wallet Service
 
-## Introduction
-Demo Credit is a mobile lending app that requires wallet functionality. This MVP wallet service allows users to create accounts, fund their accounts, transfer funds, and withdraw funds. Users in the Lendsqr Adjutor Karma blacklist cannot be onboarded.
+## Project Overview
+
+Lendsqr Credit Wallet Service is a RESTful API for managing user accounts in a credit wallet system. This service allows users to create accounts, fund accounts, transfer funds between accounts, and withdraw funds from accounts.
+
+## Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Features](#features)
+3. [Technologies Used](#technologies-used)
+4. [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Installation](#installation)
+5. [Running the Application](#running-the-application)
+   - [Development Server](#development-server)
+   - [Production Server](#production-server)
+6. [API Endpoints](#api-endpoints)
+7. [Testing](#testing)
+8. [License](#license)
 
 ## Features
-1. Create an account
-2. Fund an account
-3. Transfer funds to another user’s account
-4. Withdraw funds from an account
-5. Prevent onboarding of users in the Lendsqr Adjutor Karma blacklist
 
-## Tech Stack
-- NodeJS (LTS version)
-- KnexJS ORM
+- Create a new account
+- Fund an existing account
+- Transfer funds between accounts
+- Withdraw funds from an account
+
+## Technologies Used
+
+- **Node.js**: JavaScript runtime environment
+- **Express**: Web framework for Node.js
+- **TypeScript**: Typed superset of JavaScript
+- **Knex.js**: SQL query builder for Node.js
+- **MySQL**: Relational database management system
+- **Jest**: JavaScript testing framework
+- **Sinon**: Standalone test spies, stubs, and mocks for JavaScript
+- **Mocha**: JavaScript test framework for Node.js programs
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
 - MySQL database
-- TypeScript
 
-## Installation
+### Installation
 
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/fullstack-daddy/lendsqr.git
+   cd lendsqr
+   ```
+
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env` file in the root directory and add the following environment variables:
+   ```env
+   DATABASE_HOST=your_database_host
+   DATABASE_USER=your_database_user
+   DATABASE_PASSWORD=your_database_password
+   DATABASE_NAME=your_database_name
+   ```
+
+## Running the Application
+
+### Development Server
+
+To start the development server, run:
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/demo-credit-wallet.git
-
-# Navigate to the project directory
-cd demo-credit-wallet
-
-# Install dependencies
-npm install
-
-# Set up environment variables in a .env file
-cp .env.example .env
-
-# Run the migrations
-npx knex migrate:latest
-
-# Start the development server
 npm run dev
+```
+This will start the server using `nodemon` for automatic restarts on file changes.
 
+### Production Server
 
-API Endpoints
-1. Create an Account
-URL: /api/v1/accounts
-Method: POST
-Request Body:
+To start the production server, run:
+```bash
+npm start
+```
+
+## API Endpoints
+
+The following endpoints are available in the Credit Wallet Service:
+
+1. **Create Account**
+   - **URL**: `/accounts`
+   - **Method**: `POST`
+   - **Description**: Creates a new account.
+   - **Body Parameters**:
+     ```json
+     {
+       "name": "string",
+       "email": "string"
+     }
+     ```
+
+2. **Fund Account**
+   - **URL**: `/accounts/fund`
+   - **Method**: `POST`
+   - **Description**: Funds an existing account.
+   - **Body Parameters**:
+     ```json
+     {
+       "accountId": "number",
+       "amount": "number"
+     }
+     ```
+
+3. **Transfer Funds**
+   - **URL**: `/accounts/transfer`
+   - **Method**: `POST`
+   - **Description**: Transfers funds between accounts.
+   - **Body Parameters**:
+     ```json
+     {
+       "fromAccountId": "number",
+       "toAccountId": "number",
+       "amount": "number"
+     }
+     ```
+
+4. **Withdraw Funds**
+   - **URL**: `/accounts/withdraw`
+   - **Method**: `POST`
+   - **Description**: Withdraws funds from an account.
+   - **Body Parameters**:
+     ```json
+     {
+       "accountId": "number",
+       "amount": "number"
+     }
+     ```
+
+## Testing
+
+To run the tests, use the following command:
+```bash
+npm test
+```
+
+This will execute the test suite using Jest and Mocha.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
+---
+
+This README document provides a comprehensive guide for setting up and running the Lendsqr Credit Wallet Service. It covers the necessary steps to get started, including installation, running the application, and details of the available API endpoints. It also provides information on testing and licensing.
