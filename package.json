@@ -1,11 +1,11 @@
 {
-  "name": "lendsqr",
+  "name": "credit-wallet-service",
   "version": "1.0.0",
   "type": "module",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
     "start": "tsx src/server.ts",
-    "dev": "nodemon src/server.ts",
+    "dev": "node src/server.ts",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "author": "Aboyeji Emmanuel Olusola",
@@ -36,7 +36,6 @@
     "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "tsx": "^4.16.2",
     "typescript": "^5.5.3"
   }
 }

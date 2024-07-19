@@ -5,6 +5,8 @@ dotenv.config();
 
 export interface Account {
   id?: number;
+  userId: number;
+  accountId: string;
   name: string;
   email: string;
   balance: number;
@@ -12,15 +14,22 @@ export interface Account {
   updated_at?: Date;
 }
 
-export const createAccount = async (account: Omit<Account, 'id'>): Promise<Account> => {
-  const [id] = await knex("accounts").insert(account);
+export const createAccount = async (account: Omit<Account, 'id' | 'accountId'>): Promise<Account> => {
+  const accountId = generateUniqueAccountId();
+  const [id] = await knex("accounts").insert({ ...account, accountId });
   
   const createdAccount = await knex("accounts").where({ id }).first();
   
-  return {
-    ...createdAccount,
-    accountId: id.toString(),
-  };
+  return createdAccount;
+};
+
+// Helper function to generate a unique accountId
+function generateUniqueAccountId(): string {
+  return Math.random().toString(36).substr(2, 9).toUpperCase();
+}
+
+export const getAccountByUserId = async (userId: number): Promise<Account | undefined> => {
+  return knex("accounts").where({ userId }).first();
 };
 
 export const fundAccount = async (accountId: number, amount: number): Promise<{ message: string, balance: number }> => {
@@ -107,6 +116,14 @@ export const withdrawFunds = async (accountId: number, amount: number): Promise<
     balance: updatedAccount.balance
   };
 };
+
+interface AdjutorResponse {
+  status: string;
+  message: string;
+  meta: {
+    balance: number;
+  };
+}
 
 export const isBlacklisted = async (email: string): Promise<boolean> => {
   const apiKey = process.env.ADJUTOR_API_KEY;
